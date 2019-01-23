@@ -1,9 +1,25 @@
-#### Pivotal URL or Waffle Card number:
+## Type of change
+__X__  New feature
+____  Bug Fix
+____  Refactor
 
-#### What does this PR do?
+# Description
+[Summary of changes in your commits]
+closes #
 
-#### Where should the reviewer start?
+# Code Check
+- [ ] Wrote Tests
+- [ ] Implemented
 
-#### Any additional context you want to provide?
+# Functionality
+- [ ] This broke nothing
+- [ ] The code will run locally
+- [ ] All tests are Passing
+- [ ] The code is fully tested (greater than 98% coverage)
+- [ ] There is no unused/commented out code
 
-#### Screenshots (if appropriate)
+
+# Testing Changes
+__X__ No Tests have been changed
+____ Some Tests have been changed
+____ All of the Tests have been changed (Please describe what in the world happened)
