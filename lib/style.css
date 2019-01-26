@@ -1,1 +1,10 @@
+body {
+  font-family: 'ABeeZee';
+  text-align: center;
+  font-weight: 300;
+  background-image: url(sky.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
