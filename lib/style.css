@@ -7,4 +7,82 @@ body {
   background-size: cover;
 }
 
+.location-section {
+  margin-top: 3em;
+  margin-left: 20px;
+  text-align: center;
+}
 
+.input-message {
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.input-field {
+  width: 14em;
+  height: 2.5em;
+  font-size: 1em;
+  text-align: center;
+  background-color: #eee6ff;
+  margin-bottom: 1.5em
+}
+
+button {
+  width: 13em;
+  height: 2.5em;
+  border-radius: 40px;
+  background-color: #1a75ff;
+  color: #FFFFFF;
+  font-size: 1em;
+  margin-left: 20px;
+}
+
+button.add-favorite-btn {
+  background-color: #3385ff;
+}
+
+button.favorites-btn {
+  background-color: #4d94ff;
+}
+
+.weather {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.current-box-1 {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: white;  
+}
+
+.city-c1 {
+  font-size: 50px;
+}
+
+.current-box-2 {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: white;
+}
+
+.hourly-forecast {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.daily-forecast {
+  grid-column: 1 / 4;
+  grid-row: 3;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
