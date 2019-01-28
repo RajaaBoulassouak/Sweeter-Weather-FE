@@ -62,7 +62,7 @@
 	    var cityState = 'Denver, CO';
 	  } else var cityState = loc.value;
 	  var weatherRequest = new XMLHttpRequest();
-	  weatherRequest.open('GET', 'http://localhost:3000/api/v1/forecast?location=' + cityState);
+	  weatherRequest.open('GET', 'https://rocky-spire-33194.herokuapp.com/api/v1/forecast?location=' + cityState);
 	  weatherRequest.setRequestHeader('Content-Type', 'application/json');
 	  weatherRequest.onload = function () {
 	    var response = JSON.parse(weatherRequest.responseText);
@@ -84,7 +84,7 @@
 	  var date = new Date(data.time);
 	  var hour = date.getHours();
 	  var ampm = hour >= 12 ? 'PM' : 'AM';
-	  var time = hour + ':' + date.getMinutes() + ' ' + ampm + ', ' + (date.getUTCMonth() + 1) + '/' + date.getUTCDate();
+	  var time = date.getHours() + ':' + date.getMinutes() + ' ' + ampm + ', ' + (date.getUTCMonth() + 1) + '/' + date.getUTCDate();
 
 	  var currently1 = '<p class=\'summary-c1\'> ' + data.summary + ' </p>\n                    <p class=\'temp-c1\'> ' + data.temperature + '\u02DA </p>';
 	  current1.innerHTML = currently1;
@@ -94,7 +94,7 @@
 	};
 
 	function currentWeatherHtml2(data) {
-	  var currently3 = '<p class=\'today-c2\'> ' + data.today + ' </p>\n                    <p class=\'feels-like-c2\'> Feels Like: ' + data.feels_like + '\u02DA </p>\n                    <p class=\'humidity-c2\'> Humidity: ' + data.humidity + '% </p>\n                    <p class=\'visibility-c2\'> Visibility: ' + data.visibility + ' miles </p>\n                    <p class=\'uv_index-c2\'> UV_Index: ' + data.uv_index + ' </p>';
+	  var currently3 = '<p class=\'today-c2\'> ' + data.today + ' </p>\n                    <p class=\'feels-like-c2\'> Feels Like ' + data.feels_like + '\u02DA </p>\n                    <p class=\'humidity-c2\'> Humidity: ' + data.humidity + '% </p>\n                    <p class=\'visibility-c2\'> Visibility: ' + data.visibility + ' miles </p>\n                    <p class=\'uv_index-c2\'> UV_Index: ' + data.uv_index + ' </p>';
 	  current3.innerHTML = currently3;
 	};
 
@@ -132,14 +132,14 @@
 	  if (loc.value != '') {
 	    var cityState = loc.value;
 	    var faveLocRequest = new XMLHttpRequest();
-	    faveLocRequest.open('POST', 'http://localhost:3000/api/v1/favorites');
+	    faveLocRequest.open('POST', 'https://rocky-spire-33194.herokuapp.com/api/v1/favorites');
 	    faveLocRequest.setRequestHeader('Content-Type', 'application/json');
 	    faveLocRequest.onreadystatechange = function () {
 	      if (this.readyState === XMLHttpRequest.DONE && this.status === 201) {
 	        alert(cityState + ' added to Favorites');
 	      };
 	    };
-	    var dataObject = { "location": '' + cityState, "api_key": "2a5cfce9-a913-4ea2-b8c9-5748795200e9" };
+	    var dataObject = { "location": '' + cityState, "api_key": "a33e6bab-1427-4e23-90c6-f85255305c43" };
 	    var jsonString = JSON.stringify(dataObject);
 	    faveLocRequest.send(jsonString);
 	  }
@@ -147,7 +147,7 @@
 
 	function getFavorites() {
 	  var favoritesRequest = new XMLHttpRequest();
-	  favoritesRequest.open('GET', 'http://localhost:3000/api/v1/favorites?api_key=2a5cfce9-a913-4ea2-b8c9-5748795200e9');
+	  favoritesRequest.open('GET', 'https://rocky-spire-33194.herokuapp.com/api/v1/favorites?api_key=a33e6bab-1427-4e23-90c6-f85255305c43');
 	  favoritesRequest.onload = function () {
 	    var response = JSON.parse(favoritesRequest.responseText);
 	    var favorites = Object.values(response['data']);
@@ -157,11 +157,10 @@
 	};
 
 	function favoritesHtml(data) {
-	  console.log(data);
 	  var faves = [];
 	  var i;
 	  for (i = 0; i < data.length; i++) {
-	    var fave = '<div class=\'favorite\'>\n                  <div class=\'city-f\'> ' + data[i].id + '</div>\n                  <div class=\'time-f\'> Local Time: ' + data[i].attributes.time + ' </div>\n                  <div class=\'icon-f\'> ' + data[i].attributes.icon + ' </div>\n                  <div class=\'summary-f\'> ' + data[i].attributes.summary + ' </div>\n                  <div class=\'temp-f\'> ' + data[i].attributes.temperature + '\u02DA </div>\n                  <div class=\'feels-like-f\'> Feels like ' + data[i].attributes.feels_like + '\u02DA </div></br>\n                </div>';
+	    var fave = '<div class=\'favorite\'>\n                  <p class=\'city-f\'> ' + data[i].id + '</p>\n                  <p class=\'summary-f\'> ' + data[i].attributes.summary + ' </p>\n                  <p class=\'temp-f\'> ' + data[i].attributes.temperature + '\u02DA </p>\n                  <p class=\'feels-like-f\'> Feels like ' + data[i].attributes.feels_like + '\u02DA </p>\n                </div>';
 	    faves.push(fave);
 	  };
 	  favorites.innerHTML = faves.join('');
