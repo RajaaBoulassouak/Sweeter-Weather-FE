@@ -1,5 +1,5 @@
 ## Type of change
-__X__  New feature
+____  New feature
 ____  Bug Fix
 ____  Refactor
 
@@ -20,6 +20,6 @@ closes #
 
 
 # Testing Changes
-__X__ No Tests have been changed
+____ No Tests have been changed
 ____ Some Tests have been changed
 ____ All of the Tests have been changed (Please describe what in the world happened)

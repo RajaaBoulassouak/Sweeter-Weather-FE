@@ -46,13 +46,14 @@
 
 	'use strict';
 
-	var forecastButton = document.querySelector('.forecast');
-	var loc = document.querySelector('.location-input');
+	var forecastButton = document.querySelector('.forecast-btn');
+	var loc = document.querySelector('.input-field');
 	var currentForecast = document.querySelector('.current-forecast');
 	var hourlyForecast = document.querySelector('.hourly-forecast');
 	var dailyForecast = document.querySelector('.daily-forecast');
-	var addFaveButton = document.querySelector('.add-favorite');
-	var favoritesButton = document.querySelector('.favorites');
+	var addFaveButton = document.querySelector('.add-favorite-btn');
+	var favoritesButton = document.querySelector('.favorites-btn');
+	var favorites = document.querySelector('.favorites');
 
 	function getForecast() {
 	  var cityState = loc.value;
@@ -69,20 +70,6 @@
 	  forecastRequest.send();
 	};
 
-	function getFavorites() {
-	  var favoritesRequest = new XMLHttpRequest();
-	  favoritesRequest.open('GET', 'http://localhost:3000/api/v1/favorites');
-	  favoritesRequest.setRequestHeader('Content-Type', 'application/json');
-	  favoritesRequest.onreadystatechange = function () {
-	    var response = favoritesRequest.responseText;
-	    var data = response['data'];
-	    console.log(data);
-	  };
-	  var keyObject = { "api_key": "74b4fe88-3750-480d-9839-2cf689394ae5" };
-	  var jsonString = JSON.stringify(keyObject);
-	  favoritesRequest.send(jsonString);
-	};
-
 	function addFavorite() {
 	  var cityState = loc.value;
 	  var faveLocRequest = new XMLHttpRequest();
@@ -93,9 +80,20 @@
 	      alert(cityState + ' added to Favorites');
 	    };
 	  };
-	  var dataObject = { "location": '' + cityState, "api_key": "74b4fe88-3750-480d-9839-2cf689394ae5" };
+	  var dataObject = { "location": '' + cityState, "api_key": "2a5cfce9-a913-4ea2-b8c9-5748795200e9" };
 	  var jsonString = JSON.stringify(dataObject);
 	  faveLocRequest.send(jsonString);
+	};
+
+	function getFavorites() {
+	  var favoritesRequest = new XMLHttpRequest();
+	  favoritesRequest.open('GET', 'http://localhost:3000/api/v1/favorites?api_key=2a5cfce9-a913-4ea2-b8c9-5748795200e9');
+	  favoritesRequest.onload = function () {
+	    var response = JSON.parse(favoritesRequest.responseText);
+	    var favorites = Object.values(response['data']);
+	    favoritesHtml(favorites);
+	  };
+	  favoritesRequest.send();
 	};
 
 	function currentForecastHtml(data) {
@@ -114,12 +112,21 @@
 	};
 
 	function dailyForecastHtml(data) {
-	  var htmlString3 = '';
+	  var htmlString = '';
 	  var i;
 	  for (i = 0; i < data.length; i++) {
-	    htmlString3 += "<p>" + Object.values(data[i]) + ".</p>";
+	    htmlString += "<p>" + Object.values(data[i]) + ".</p>";
 	  }
-	  dailyForecast.insertAdjacentHTML('beforeend', htmlString3);
+	  dailyForecast.insertAdjacentHTML('beforeend', htmlString);
+	};
+
+	function favoritesHtml(data) {
+	  var htmlString = '';
+	  var i;
+	  for (i = 0; i < data.length; i++) {
+	    htmlString += "<p>" + Object.values(data[i]) + ".</p>";
+	  };
+	  favorites.insertAdjacentHTML('beforeend', htmlString);
 	};
 
 	forecastButton.addEventListener('click', getForecast);
