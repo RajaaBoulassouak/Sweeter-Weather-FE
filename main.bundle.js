@@ -57,6 +57,20 @@
 	var favoritesButton = document.querySelector('.favorites-btn');
 	var favorites = document.querySelector('.favorites');
 
+	function checkFieldEmpty() {
+	  if (loc.value == '') {
+	    weatherButton.disabled = true;
+	    addFaveButton.disabled = true;
+	  } else {
+	    weatherButton.disabled = false;
+	    addFaveButton.disabled = false;
+	  }
+	}
+
+	loc.addEventListener('keyup', function (event) {
+	  checkFieldEmpty(event.target.value);
+	});
+
 	function getWeather() {
 	  if (loc.value === '') {
 	    var cityState = 'Denver, CO';
