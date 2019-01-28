@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Sweeter Weather</title>
-    <link rel='stylesheet' href='lib/style.css'></link>
+    <link rel='stylesheet' type='text/css' href='lib/style.css'></link>
   </head>
   <body>
     <div class='location-section'>
@@ -16,16 +16,26 @@
       <button class='add-favorite-btn'>Add Location to Favorites</button>
       <button class='favorites-btn'>See Favorite Locations</button>
     </div>
-    
     <div class='favorites-data'>
       <div class='favorites'></div>
     </div>
-    
     <div class='weather'>
-      <div class='current-box-1'></div>
-      <div class='current-box-2'></div>
-      <div class='hourly-forecast'></div>
-      <div class='daily-forecast'></div>
+      <div class='current-1'>
+        <div class='header'>Currently</div>
+        <div class='current-box-1'>
+          <div class='box-1-info-1'></div>
+          <div class='box-1-info-2'></div>
+        </div>
+      </div>
+      <div class='current-2'>
+        <div class='header'>Details</div>
+        <div class='current-box-2'></div>
+      </div>
+      <div class=forecast>
+        <div class='header'>Forecast</div>
+        <div class='hourly-forecast'></div>
+        <div class='daily-forecast'></div>
+      </div>
     </div>
     <script src='main.bundle.js'></script>
   </body>
