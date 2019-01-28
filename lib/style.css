@@ -34,19 +34,15 @@ button {
   height: 2.5em;
   border-radius: 40px;
   border:3px solid #5B63B7;
-  background-color: #1a75ff;
+  background-color: #884dff;
   color: #FFFFFF;
   font-size: 1em;
   margin-left: 20px;
   margin-bottom: 2em;
 }
 
-button.add-favorite-btn {
-  background-color: #3385ff;
-}
-
-button.favorites-btn {
-  background-color: #4d94ff;
+button:hover {
+  background-color: #4400cc;
 }
 
 .favorites {
