@@ -38,6 +38,7 @@ button {
   color: #FFFFFF;
   font-size: 1em;
   margin-left: 20px;
+  margin-bottom: 2em;
 }
 
 button.add-favorite-btn {
@@ -48,13 +49,37 @@ button.favorites-btn {
   background-color: #4d94ff;
 }
 
+.favorites {
+  display: inline-flex;
+  width: 100%;
+  margin-bottom: 1em 
+}
+
+.favorite {
+  height: 200px;
+  width: 200px;
+  font-size: 17px;
+  font-weight: 500;
+  flex-direction: column;
+  text-align: center;
+  border:3px solid #5B63B7;
+  border-radius: 20px;
+  background-color: #fffafa;
+  margin: 1em;
+}
+
+.city-f {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .weather {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2fr;
   grid-gap: 10px;
   width: auto;
-  margin-top: 2em;
+  margin-top: 0.5em;
 }
 
 .current-1 {
@@ -195,7 +220,8 @@ button.favorites-btn {
 .temp-h,
 .day-d,
 .high-d, 
-.low-d {
+.low-d, 
+.temp-f {
   font-size: 21px;
   font-weight: 600;
 }
